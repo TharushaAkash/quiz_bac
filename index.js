@@ -8,12 +8,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['https://quizem.netlify.app', 'http://localhost:5173'],
+    origin: ['https://quizem.netlify.app', 'http://localhost:5173', 'http://localhost:5174'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
-app.use(bodyParser.json());
-
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 // Request logger
 app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);

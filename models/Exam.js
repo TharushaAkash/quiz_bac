@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
     questionText: { type: String, required: true },
-    type: { type: String, default: 'MCQ-Single' }, // MCQ-Single, MCQ-Multiple, Short/Output
+    type: { type: String, default: 'MCQ-Single' }, // MCQ-Single, MCQ-Multiple, Short/Output, Code-Evaluation
     options: [{ type: String }],
     correctOptions: [{ type: Number }], // For MCQ
     correctAnswer: { type: String }, // For Short/Output
     codeSnippet: { type: String },
+    marks: { type: Number, default: 0 }, // For Code-Evaluation questions
 });
 
 const examSchema = new mongoose.Schema({
